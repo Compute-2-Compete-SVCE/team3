@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeGen</title>
+    <script src="https://kit.fontawesome.com/db70784c3b.js" crossorigin="anonymous"></script>
+    <script>
+    	function back()
+    	{
+    		window.history.back();
+    	}
+    </script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="flex flex-column" onload="init()">
+    <!-- header -->
+    <header class="flex align-items-center justify-content-between container main-header">
+       <a href="home.html"> <img src="icons/logo/logo-small.png" class="logo" /></a>
+        <ul class="flex justify-content-between align-items-center clean-list main-nav">
+               <li class="flex align-items-center" onclick="onAboutNavBtnClick(this)"><a href="#about">About</a></li>
+        </ul>
+        <a href="home.html"><h2>Back</h2></a>
+    </header>
+
+    <!-- main -->
+    <main class="flex flex-column flex-grow-1 main-content">
+        
+        <div class="flex flex-column gallery-container">
+            <section class="flex flex-wrap container align-items-center gallery-search-nav-container">
+                <section class="flex flex-grow-1 gallery-keywords-container">
+                    <div class="flex justify-content-between gallery-keywords">
+                    </div>
+                </section>
+            </section>
+            <section class="grid images-grid container images-gallery"></section>
+        </div>
+        <section class="container flex-grow-1 flex-wrap align-items-center justify-content-around editor-container">
+            <canvas class="canvas" id="canvas" height="500" width="500" onmousedown="onCanvasMouseDown(event)"></canvas>
+            <section class="flex flex-column align-items-center justify-content-start settings-container">
+                <input class="text-line-input" type="text" id="text-line-input"
+                    onkeyup="onTextLineInputChange(this.value)">
+                <div class="flex row-position-btns-container">
+                    <button class="editor-icon change-line-btn" onclick="onChangeLine()"></button>
+                    <button class="editor-icon add-line-btn" onclick="onAddLine()"></button>
+                    <button class="editor-icon remove-selected-line-btn" onclick="onRemoveSelectedLine()"></button>
+                </div>
+                <div class="flex flex-column text-actions-btns-container">
+                    <div class="flex text-size-align-btns-container">
+                        <button class="editor-icon increase-font-btn" onclick="onFontSizeChange(1)">
+                            <button class="editor-icon decrease-font-btn" onclick="onFontSizeChange(-1)"></button>
+                            <button class="editor-icon text-align-left-btn"
+                                onclick="onTextAlignChange('left')"></button>
+                            <button class="editor-icon text-align-center-btn"
+                                onclick="onTextAlignChange('center')"></button>
+                            <button class="editor-icon text-align-right-btn"
+                                onclick="onTextAlignChange('right')"></button>
+                    </div>
+                    <div class="flex text-font-decorations-container">
+                        <select class="text-font-select" name="text-font-select" id="text-font-select"
+                            onchange="onFontFamilyChange(this.value)">
+                            <option value="impact">Impact</option>
+                            <option value="arial" style="font-family:Arial, Helvetica, sans-serif;">Arial</option>
+                        </select>
+                        <button class="editor-icon text-stroke-color-btn" onclick="onStrokeColorClick()"></button>
+                        <input type="color" class="text-stroke-color-input" onchange="onStrokeColorChange(this.value)"
+                            hidden>
+
+                        <button class="editor-icon text-font-color-btn" onclick="onFontColorClick()"></button>
+                        <input type="color" class="text-font-color-input" onchange="onFontColorChange(this.value)"
+                            hidden>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="flex flex-wrap align-items-center justify-content-center container about-container">
+           
+            <section class="flex flex-column align-items-start creator-details-container">
+                <div class="creator-name">
+                	<img src="C:\Users\deepak\Desktop\Meme\images\square\logo.jpg"  style="float:left; top=100px bottom=50px; width:250px; height:250px; border:none;">
+                	<img src="C:\Users\deepak\Desktop\Meme\images\square\logo2.jpg"  style="float:left; top=100px bottom=50px; width:700px; height:250px; border:none; margin:0px 50px;" >
+        		</div>
+        	
+            </section>
+        </section>
+    </main>
+    <!-- footer -->
+
+    <footer id="about"
+        class="flex flex-column flex-shrink-0 justify-content-center align-items-center container copyrights-container">
+        <img src="icons/logo/logo-small.png" class="flex justify-content-center logo" />
+        <div class="copyright" style="text-transform:capitalize; font-family:Times New Roman,Times,serif;"><span>&#169;</span>all rights reserved 2019</div>
+    </footer>
+    <script src="js/service/memeServiceGallery.js"></script>
+    <script src="js/service/memeServiceEditor.js"></script>
+    <script src="js/controller/controller.js"></script>
+</body>
+</html>
